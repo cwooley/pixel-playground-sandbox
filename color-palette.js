@@ -13,10 +13,11 @@ class ColorPalette {
   render(){
 
     let HTML = colors.map((color)=>{
-      return `<div class="color-picker" data-color="${color}" style="background-color: ${color}; cursor:pointer; width: 25px; height: 25px; border-radius: 50%;">
+      return `<div class="color-picker" data-color="${color}" style="background-color: ${color}; cursor:pointer; width: 25px; height: 25px; border-radius: 50%; display: inline-block; float: right;">
       </div>`
     }).join(' ')
-    $('#palette-goes-here').html(HTML)
+    $('#palette-goes-here').empty()
+    $('#palette-goes-here').append(HTML)
   }
 
 }
