@@ -9,7 +9,7 @@ function createSquare(){
       this.x = x
       this.y = y
       if (!color){
-        this.color = 'rgb(255,255,255)'
+        this.color = 'rgb(0,0,0)'
       } else {
         this.color = color
       }
@@ -17,16 +17,25 @@ function createSquare(){
       store.squares.push(this)
     }
     render(canvasContext){
-      ctx.fillStyle = `rgb(${r},${g},${b})`
-      ctx.fillStyle = this.color
+      canvasContext.fillStyle = this.color
       canvasContext.fillRect(this.x, this.y, 10, 10)
     }
 
+
+
     static findByCoords(x,y){
+      while(x % 10 != 0 ){
+    		x -= 1
+        }
+
+    	while(y % 10 != 0 ){
+    		y -= 1
+        }
       return store.squares.filter((square)=>{
         return square.x === x && square.y === y
       })[0]
     }
+
   }
 }
 let Square = createSquare()

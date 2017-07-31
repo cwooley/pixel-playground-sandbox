@@ -1,13 +1,14 @@
 store = { squares: []}
 
 window.onload = function() {
-  let canvas = document.getElementById('myCanvas');
-  // var canvas = $('#myCanvas')[0]
-  var ctx = canvas.getContext("2d");
+  makeGridOfSquares()
+  renderGrid(ctx)
 
 }
 
-
+let canvas = document.getElementById('myCanvas');
+// var canvas = $('#myCanvas')[0]
+var ctx = canvas.getContext("2d");
 function fillRow(y){
 
 }
@@ -20,15 +21,10 @@ canvas.addEventListener('click', function(e){
 	let x = e.layerX
 	let y = e.layerY
 
-	while(x % 10 != 0 ){
-		x -= 1
-    }
+	let square = Square.findByCoords(x,y)
 
-	while(y % 10 != 0 ){
-		y -= 1
-    }
-	ctx.fillStyle = 'rgb(0,0,0)'
-	ctx.fillRect(x, y, 10, 10)
+  square.color = 'rgb(255,0,0)'
+	renderGrid(ctx)
 })
 
 
