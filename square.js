@@ -1,7 +1,8 @@
 function createSquare(){
   let id = 0
-  let width = 10
-  let height = 10
+  const width = 10
+  const height = 10
+
   return class {
     constructor(x,y,color){
       this.width = width
@@ -21,16 +22,13 @@ function createSquare(){
       canvasContext.fillRect(this.x, this.y, 10, 10)
     }
 
-
-
     static findByCoords(x,y){
       while(x % 10 != 0 ){
     		x -= 1
-        }
-
+      }
     	while(y % 10 != 0 ){
     		y -= 1
-        }
+      }
       return store.squares.filter((square)=>{
         return square.x === x && square.y === y
       })[0]

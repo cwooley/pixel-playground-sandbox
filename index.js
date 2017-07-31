@@ -1,34 +1,25 @@
 store = { squares: []}
-
 window.onload = function() {
   makeGridOfSquares()
   renderGrid(ctx)
+  palette.render()
 
+  $('body').on('click', '.color-picker', function(){
+    palette.activeColor = this.dataset.color
+  })
 }
 
-let canvas = document.getElementById('myCanvas');
-// var canvas = $('#myCanvas')[0]
-var ctx = canvas.getContext("2d");
-function fillRow(y){
-
-}
-
-function fillGrid(){
-
-}
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext("2d");
+const palette = new ColorPalette()
 
 canvas.addEventListener('click', function(e){
-	let x = e.layerX
+  let x = e.layerX
 	let y = e.layerY
-
 	let square = Square.findByCoords(x,y)
-
-  square.color = 'rgb(255,0,0)'
+  square.color = palette.activeColor
 	renderGrid(ctx)
 })
-
-
-
 
 function makeRowOfSquares(y){
   for (let i = 0; i < 100; i++){
